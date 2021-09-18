@@ -12,4 +12,9 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-console.log("Background script running");
+// Set listener to receive data from the runtime
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  console.log(msg);
+  console.log(sender);
+  console.log(sendResponse);
+});
