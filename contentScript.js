@@ -1,6 +1,14 @@
+const text = [];
+
 const allATags = document.getElementsByTagName("a");
 
-// Hi-light all links in yellow
+// Get the text of all links on page and push to local storage
 for (const tag of tags) {
-  tag.style = "background-color: yellow";
+  text.push(tag.textContent);
 }
+
+chrome.storage.local.set({
+  text,
+});
+
+chrome.runtime.sendMessage(null, text);
