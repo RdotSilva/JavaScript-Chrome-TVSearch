@@ -17,4 +17,5 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   console.log(msg);
   console.log(sender);
   sendResponse("Got the message from background");
+  chrome.tab.sendMessage(sender.tab.id, "Got the message from background");
 });
