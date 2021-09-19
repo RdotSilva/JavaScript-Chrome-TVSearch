@@ -16,5 +16,5 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   console.log(msg);
   console.log(sender);
-  console.log(sendResponse);
+  sendResponse("Got the message from background");
 });
