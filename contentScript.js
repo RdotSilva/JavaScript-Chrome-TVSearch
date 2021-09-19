@@ -11,4 +11,7 @@ chrome.storage.local.set({
   text,
 });
 
-chrome.runtime.sendMessage(null, text);
+// Send the response callback
+chrome.runtime.sendMessage(null, text, (response) => {
+  console.log("Incoming from send response function: " + response);
+});
