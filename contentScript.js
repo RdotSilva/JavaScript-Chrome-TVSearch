@@ -15,3 +15,9 @@ chrome.storage.local.set({
 chrome.runtime.sendMessage(null, text, (response) => {
   console.log("Incoming from send response function: " + response);
 });
+
+// Add listener to receive the message from the background service worker
+chrome.runtime.onMessage.onListener((message, sender, sendResponse) => {
+  console.log(message);
+  console.log(sender);
+});
