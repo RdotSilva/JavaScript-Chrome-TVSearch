@@ -4,11 +4,22 @@ chrome.runtime.onInstalled.addListener(() => {
     id: "contextMenu",
     contexts: ["page", "selection"], // Only show context when user clicks page or selects
   });
+  // chrome.contextMenus.onClicked.addListener((event) => {
+  //   console.log(event);
+  //   chrome.tabs.create({
+  //     url: `https://www.imdb.com/find?q=${event.selectionText}&ref_=nv_sr_sm`,
+  //   });
+  // });
+  // Fetch tv show data from API and add to chrome storage
   chrome.contextMenus.onClicked.addListener((event) => {
-    console.log(event);
-    chrome.tabs.create({
-      url: `https://www.imdb.com/find?q=${event.selectionText}&ref_=nv_sr_sm`,
-    });
+    fetch(`https://api.tvmaze.com/search/shows?q=girls`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        chrome.storage.local.set({
+          shows: data,
+        });
+      });
   });
 });
 
