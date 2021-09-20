@@ -1,4 +1,9 @@
 chrome.runtime.onInstalled.addListener(() => {
+  // Set default value for shows to avoid bad data on init
+  chrome.storage.local.set({
+    shows: [],
+  });
+
   chrome.contextMenus.create({
     title: "Test Context Menu",
     id: "contextMenu",
