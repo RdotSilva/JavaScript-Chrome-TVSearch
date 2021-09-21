@@ -13,7 +13,11 @@ function renderShow(show) {
   const image = document.createElement("img");
   image.src = show.show.image ? show.show.image.medium : null;
 
+  const status = document.createElement("p");
+  status.textContent = show.status ? show.show.status : "Unknown";
+
   showDiv.appendChild(title);
   showDiv.appendChild(image);
+  showDiv.appendChild(status);
   document.body.appendChild(showDiv);
 }
