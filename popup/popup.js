@@ -11,7 +11,7 @@ function renderShow(show) {
   title.textContent = show.show.name;
 
   const image = document.createElement("img");
-  image.src = show.show.image.medium;
+  image.src = show.show.image ? show.show.image.medium : null;
 
   showDiv.appendChild(title);
   showDiv.appendChild(image);
