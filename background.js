@@ -5,7 +5,7 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 
   chrome.contextMenus.create({
-    title: "Test Context Menu",
+    title: "Search TV Show",
     id: "contextMenu",
     contexts: ["page", "selection"], // Only show context when user clicks page or selects
   });
@@ -17,7 +17,7 @@ chrome.runtime.onInstalled.addListener(() => {
   // });
   // Fetch tv show data from API and add to chrome storage
   chrome.contextMenus.onClicked.addListener((event) => {
-    fetch(`https://api.tvmaze.com/search/shows?q=girls`)
+    fetch(`https://api.tvmaze.com/search/shows?q=${event.selectionText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
