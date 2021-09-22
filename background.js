@@ -26,14 +26,18 @@ chrome.runtime.onInstalled.addListener(() => {
   // });
   // Fetch tv show data from API and add to chrome storage
   chrome.contextMenus.onClicked.addListener((event) => {
-    fetch(`https://api.tvmaze.com/search/shows?q=${event.selectionText}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        chrome.storage.local.set({
-          shows: data,
+    if (event.menuItemId === "contextMenu") {
+      fetch(`https://api.tvmaze.com/search/shows?q=${event.selectionText}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          chrome.storage.local.set({
+            shows: data,
+          });
         });
-      });
+    } else if (event.menuItemId === "contextMenu2") {
+      chrome.tts.speak(event.selectionText);
+    }
   });
 });
 
