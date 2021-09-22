@@ -4,11 +4,20 @@ chrome.runtime.onInstalled.addListener(() => {
     shows: [],
   });
 
+  // TV search context menu
   chrome.contextMenus.create({
     title: "Search TV Show",
     id: "contextMenu",
     contexts: ["page", "selection"], // Only show context when user clicks page or selects
   });
+
+  // Text to speech context menu
+  chrome.contextMenus.create({
+    title: "Read This Text",
+    id: "contextMenu2",
+    contexts: ["page", "selection"], // Only show context when user clicks page or selects
+  });
+
   // chrome.contextMenus.onClicked.addListener((event) => {
   //   console.log(event);
   //   chrome.tabs.create({
