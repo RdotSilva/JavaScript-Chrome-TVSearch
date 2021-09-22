@@ -4,6 +4,10 @@ chrome.storage.local.get(["shows"], (res) => {
   }
 });
 
+/**
+ * Render tv show data
+ * @param {Object} show The tv show data object
+ */
 function renderShow(show) {
   const showDiv = document.createElement("div");
 
